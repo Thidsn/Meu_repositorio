@@ -1,0 +1,227 @@
+Algoritmo "CADASTRO_AG_VIAGEM"
+
+Var
+   // Seção de Declarações das variáveis
+   numero : vetor[1..5] de inteiro
+   NOME   : vetor[1..5] de Caracter
+   tel  : vetor[1..5] de caracter
+   end : vetor[1..5] de caracter
+   
+   indice : inteiro
+     L,XL :  LOGICO
+    OPCAO : Caracter
+    destino:vetor[1..5] de caracter
+
+   
+FUNÇÃO PESQUISA(XV: INTEIRO) : LOGICO
+VAR II : INTEIRO
+   A : LOGICO
+INICIO
+   A := FALSO
+   PARA II DE 1 ATÉ 5 FAÇA
+      SE numero[ii] = xv ENTÃO
+         A := VERDADEIRO
+         interrompa
+      FIMSE
+   FIMPARA
+   RETORNE A
+FIMFUNÇÃO
+
+
+PROCEDIMENTO INCLUIRCLIENTE
+VAR II  : INTEIRO
+     L  :  LOGICO
+   xnum : INTEIRO
+   xnom : caracter
+   xtel : caracter
+   xend : caracter
+INICIO
+   limpaTela
+   Escreval(" INCLUIR CLIENTE ")
+   SE indice <= 5 ENTÃO
+      xnum := 0
+      Xnom := ""
+      xtel := ""
+      xend := ""
+      L := VERDADEIRO
+      ENQUANTO L FAÇA
+         ESCREVA("DIGITE O NUMERO",Indice," : ")
+         LEIA(xnum)
+         L := PESQUISA(xnum)
+      FIMENQUANTO
+      ESCREVA("DIGITE o Nome : ")
+      LEIA(xnom)
+      ESCREVA("DIGITE o Telefone: ")
+      LEIA(xtel)
+      ESCREVA("DIGITE o Endereço: ")
+      LEIA(xend)
+      Numero[indice] := xnum
+      Nome[indice]   := xnom
+      Tel[indice]  := xtel
+      END[INDICE] := xend
+      indice := indice + 1
+   FIMSE
+
+   ESCREVAL(" ")
+   ESCREVA("TECLE <ENTER> ")
+   LEIA(XL)
+
+FIMPROCEDIMENTO
+
+PROCEDIMENTO INCLUIRDESTINO
+VAR II  : INTEIRO
+     L  :  LOGICO
+   xnum : INTEIRO
+   xdest : caracter
+
+INICIO
+   limpaTela
+   Escreval(" INCLUIR DESTINO ")
+   SE indice <= 5 ENTÃO
+      xnum := 0
+      xdest := ""
+
+      L := VERDADEIRO
+      ENQUANTO L FAÇA
+         ESCREVA("DIGITE O NUMERO",Indice," : ")
+         LEIA(xnum)
+         L := PESQUISA(xnum)
+      FIMENQUANTO
+      ESCREVA("DIGITE o DESTINO : ")
+      LEIA(xdest)
+
+
+      Numero[indice] := xnum
+      destino[indice]  := xdest
+
+      indice := indice + 1
+   FIMSE
+
+   ESCREVAL(" ")
+   ESCREVA("TECLE <ENTER> ")
+   LEIA(XL)
+
+FIMPROCEDIMENTO
+
+
+
+PROCEDIMENTO  CONSULTARCLIENTE
+VAR II : INTEIRO
+   L  :  LOGICO
+   xnum : INTEIRO
+   xnome : caracter
+   xtel : caracter
+
+INICIO
+   limpaTela
+
+   Escreval(" CONSULTA ")
+
+   PARA II DE 1 ATÉ 5 FAÇA
+      ESCREVAL("[",II,"] -> ",NUMERO[II]," ",NOME[II]," ",tel[II])
+   FIMPARA
+
+   ESCREVAL(" ")
+   ESCREVA("TECLE <ENTER> ")
+   LEIA(XL)
+
+FIMPROCEDIMENTO
+
+PROCEDIMENTO CONSULTARDESTINO
+VAR II : INTEIRO
+   L  :  LOGICO
+   xnum : INTEIRO
+   xdest : caracter
+
+
+INICIO
+   limpaTela
+
+   Escreval(" CONSULTAR DESTINO ")
+
+   PARA II DE 1 ATÉ 5 FAÇA
+      ESCREVAL("[",II,"] -> ",NUMERO[II]," ",DESTINO[II])
+   FIMPARA
+
+   ESCREVAL(" ")
+   ESCREVA("TECLE <ENTER> ")
+   LEIA(XL)
+
+FIMPROCEDIMENTO
+
+
+
+
+
+PROCEDIMENTO EXCLUIR
+VAR  II : INTEIRO
+     L  :  LOGICO
+   xnum : INTEIRO
+   xnom : caracter
+   xtel : caracter
+
+
+INICIO
+   limpaTela
+   Escreval(" EXCLUIR ")
+   xnum := 0
+   L := FALSO
+   ENQUANTO L FAÇA
+      ESCREVA("DIGITE O NUMERO ",II," : ")
+      LEIA(xnum)
+      L := PESQUISA(xnum)
+   FIMENQUANTO
+
+   ESCREVAL("DIGITE o Nome : ",Nome[ii])
+   ESCREVAL("DIGITE a Idade: ",tel[ii])
+
+   Nome[ii] := "  "
+  tel[ii]:= "  "
+
+   ESCREVAL(" ")
+   ESCREVA("TECLE <ENTER> ")
+   LEIA(XL)
+
+FIMPROCEDIMENTO
+
+
+
+
+Inicio
+
+   indice := 1
+   L := VERDADEIRO
+   OPCAO := ""
+   ENQUANTO L FAÇA
+      LIMPATELA
+      ESCREVAL("   MENU   ")
+      ESCREVAL("1-INCLUIR CLIENTE")
+      ESCREVAL("2-INCLUIR DESTINO")
+      ESCREVAL("3-EXCLUSÃO")
+      ESCREVAL("4-CONSULTA CLIENTE")
+      ESCREVAL("5-CONSULTAR DESTINO")
+      ESCREVAL("6-FINALIZAR")
+      ESCREVAL(" ")
+      Escreva("Digite a opção:")
+      Leia(opcao)
+      ESCOLHA OPCAO FAÇA
+         CASO "1"
+              INCLUIRCLIENTE
+         CASO "2"
+              INCLUIRDESTINO
+         CASO "3"
+              EXCLUIR
+         CASO "4"
+              CONSULTARCLIENTE
+         CASO "5"
+              CONSULTARDESTINO
+         CASO "6"
+              L := FALSO
+      OUTROCASO
+          ESCREVAL("OPÇÃO INVÁLIDA !!!")
+          ESCREVAL(" ")
+          ESCREVA("TECLE <ENTER> ")
+          LEIA(XL)
+      FIMESCOLHA
+   FIMENQUANTO
+Fimalgoritmo
